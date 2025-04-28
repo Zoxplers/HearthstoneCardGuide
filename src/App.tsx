@@ -1,4 +1,5 @@
 import "./App.less";
+import { Analytics } from "@vercel/analytics/react";
 import { Redirect, Route, Switch } from 'wouter';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { themeOptions } from "./ThemeOptions";
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/card/:cardid" component={Card} />
         <Route component={NotFound} />
       </Switch>
+      <Analytics />
     </ThemeProvider>
   );
 };
