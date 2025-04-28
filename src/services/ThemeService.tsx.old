@@ -1,0 +1,8 @@
+import { create } from "zustand";
+
+const useThemeService = create((set) => ({
+    darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
+    toggleDarkMode: () => set((state:any) => ({ darkMode: !state.darkMode }))
+}));
+
+export default useThemeService;
