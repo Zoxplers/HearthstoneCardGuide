@@ -1,20 +1,19 @@
-import './Search.less';
+import styles from './Search.module.less';
 import { Button, TextField } from '@mui/material';
 import Header from '../../components/Header/Header';
 
 export default function Search() {
   return (
     <div className="Search">
-      <div id="heading">
-        <Header></Header>
-        <div id="subheader">Find your favorite cards</div> 
-        <div id="searchbar">
+      <Header>
+        <div className={styles.subheader}>Find your favorite cards</div> 
+        <div className={styles.searchbar}>
           <TextField id="searchfield" label="Search" variant="outlined" color="primary"/>
-          <Button id="searchbutton" variant="contained" size="medium">
+          <Button className={styles.searchbutton} variant="contained" size="medium">
             <span className="material-icons-round">search</span>
           </Button>
         </div>
-      </div>
+      </Header>
     </div>
   );
 }
