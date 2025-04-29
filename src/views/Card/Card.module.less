@@ -1,5 +1,38 @@
+.Card
+{
+    display: flex;
+    flex-direction: column;
+}
+
 .subheader
 {
-    font: var(--mui-font-h5);
+    font: var(--mui-font-h6);
     padding: 1vh 0 calc(1vh + 0.5em) 0;
+    @media (min-width: 900px)
+    {
+        font: var(--mui-font-h5);
+    }
+}
+
+.notfound
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.found
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.found > span
+{
+    display: flex;
+    flex-direction: column;
 }

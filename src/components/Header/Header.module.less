@@ -12,7 +12,7 @@
     padding: calc(0.75vh + 0.4em) 0;
 }
 
-a
+.title
 {
     color: unset;
     text-decoration: unset;
@@ -20,5 +20,9 @@ a
 
 .header
 {
-    font: var(--mui-font-h3);
+    font: var(--mui-font-h4);
+    @media (min-width: 900px)
+    {
+        font: var(--mui-font-h3);
+    }
 }

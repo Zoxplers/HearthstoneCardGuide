@@ -1,0 +1,36 @@
+.Results > span
+{
+    display: inline-block;
+    height: 40vh;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.result
+{
+    margin: auto;
+    object-fit: contain;
+    height: 100%;
+    width: 50vw;
+    transition: height 0.15s;
+
+    @media (min-width: 600px)
+    {
+        width: 33vw;
+    }
+
+    @media (min-width: 1200px)
+    {
+        width: 25vw;
+    }
+
+    @media (min-width: 1800px)
+    {
+        width: 20vw;
+    }
+}
+
+.result:hover
+{
+    height: 95%;
+}
