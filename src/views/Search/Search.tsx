@@ -1,7 +1,6 @@
 import styles from './Search.module.less';
-import { Button, Pagination, TextField } from '@mui/material';
+import { Button, Pagination, TextField, useMediaQuery, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'wouter';
 import Header from '../../components/Header/Header';
 import Results from '../../components/Results/Results';
 import useAPIService from '../../services/APIService';
@@ -10,6 +9,8 @@ export default function Search() {
   const { CARDS, PARAMS, fetchCards } = useAPIService();
   const [pageCount, setPageCount] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     if(CARDS){
@@ -33,7 +34,7 @@ export default function Search() {
           </Button>
         </div>
         <div className={styles.navbar}>
-          <Pagination color="secondary" count={pageCount} size="large" page={Number(PARAMS.get("page"))} onChange={ (_, page) => {
+          <Pagination color="secondary" count={pageCount} size={isSmall ? "medium":"large"} page={Number(PARAMS.get("page"))} onChange={ (_, page) => {
             PARAMS.set("page", page.toString());
             fetchCards();
           }} />
