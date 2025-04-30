@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'wouter';
 import { useEffect } from 'react';
 import Header from '../../components/Header/Header';
 import useAPIService from '../../services/APIService';
+import { Button } from '@mui/material';
 
 export default function Card() {
   const params = useParams();
@@ -34,24 +35,28 @@ export default function Card() {
     <div className={styles.Card}>
       <Header>
         <div className={styles.subheader}>Card details</div> 
+        <div className={styles.navbar}>
+          <Button variant="contained" color="secondary" onClick={() => {navigate("/")}}>Back to search</Button>
+          <Button variant="contained" color="secondary" onClick={() => console.error("Not yet implemented")}>Add to favorites</Button>
+        </div>
       </Header>
-      {CURRENTCARD? 
+      {typeof CURRENTCARD == "string" ?
+      <div className={styles.notfound}>
+        {CURRENTCARD}
+      </div>
+      :
       <div className={styles.found}>
         <span>
           <img src={CURRENTCARD.image} />
         </span>
         <span>
           <text>{CURRENTCARD.name}</text>
-          {Array.from(keyMap).map(([key, value]) => {
+          {Array.from(keyMap).map(([key, value], index) => {
             if(CURRENTCARD[key] != undefined){
-              return(<text>{value}: {CURRENTCARD[key]}</text>)
+              return(<text key={index}>{value}: <section dangerouslySetInnerHTML={{ __html: CURRENTCARD[key] }}/></text>)
             }
           })}
         </span>
-      </div>
-      :
-      <div className={styles.notfound}>
-        Card not found!
       </div>
       }
     </div>

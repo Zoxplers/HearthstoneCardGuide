@@ -6,12 +6,13 @@ export default function Results() {
     const { CARDS, clearCard } = useAPIService();
     const [_, navigate] = useLocation();
 
-    console.log(CARDS);
-
     return (
       <div className={styles.Results}>
-        {CARDS && CARDS["cards"].map((card: any) => (
-            <span key={card.id}>
+        {typeof CARDS == "string" ?
+         <span className={styles.text}>{CARDS}</span>
+         :
+         CARDS["cards"].map((card: any) => (
+            <span className={styles.imageContainer} key={card.id}>
                 <img className={styles.result} src={card.image} alt={card.name} onClick={() => {
                     clearCard();
                     navigate(`/card/${card.id}`);

@@ -12,23 +12,38 @@ export default function Search() {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 
+  function search()
+  {
+    PARAMS.set("textFilter", searchQuery);
+    fetchCards();
+  }
+
   useEffect(() => {
-    if(CARDS){
+    search();
+  }, []);
+
+  useEffect(() => {
+    if(CARDS.pageCount){
       setPageCount(CARDS.pageCount);
     }
-  }, [CARDS])
+  }, [CARDS]);
 
   return (
     <div className={styles.Search}>
       <Header>
         <div className={styles.subheader}>Find your favorite cards</div> 
         <div className={styles.searchbar}>
-          <TextField id="searchfield" label="Search" variant="outlined" color="primary" onChange={(event: any) => {
+          <TextField id="searchfield" label="Search" variant="outlined" color="primary"
+          onKeyDown={(event:  any) => {
+            if(event.key == "Enter") {
+              search();
+            }
+          }}
+          onChange={(event: any) => {
             setSearchQuery(event.target.value);
           }}/>
           <Button className={styles.searchbutton} variant="contained" size="medium" onClick={() => {
-            PARAMS.set("textFilter", searchQuery);
-            fetchCards();
+            search();
           }}>
             <span className="material-icons-round">search</span>
           </Button>

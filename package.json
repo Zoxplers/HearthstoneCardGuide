@@ -7,6 +7,9 @@
     "build": "rsbuild build",
     "check": "biome check --write",
     "dev": "rsbuild dev",
+    "start": "rsbuild dev",
+    "devStart": "rsbuild dev",
+    "open": "rsbuild dev --open",
     "format": "biome format --write",
     "preview": "rsbuild preview"
   },
@@ -16,6 +19,8 @@
     "@mui/material": "^7.0.2",
     "@vercel/analytics": "^1.5.0",
     "ky": "^1.8.1",
+    "localforage": "^1.10.0",
+    "lz-string": "^1.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "wouter": "^3.7.0",

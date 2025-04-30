@@ -3,11 +3,18 @@ import React from 'react';
 import { useLocation } from 'wouter';
 
 export default function Header({children}: {children?: React.ReactNode}) {
-    const [, navigate] = useLocation();
+    const [location, _] = useLocation();
 
     return (
         <div className={`${styles.Header}`}>
-            <a className={styles.title} onClick={() => navigate("/")}>
+            <a className={styles.title} onClick={() => {
+                    //Hard refresh
+                    //Vulnerable, because this requires the home page to be set at "/"
+                    if(location != "/")
+                    {
+                        window.location.href = "/";
+                    }
+                }}>
                 <div className={styles.header}>Hearthstone Card Guide</div>
             </a>
             {children}

@@ -28,6 +28,6 @@ Build production app
 
 **License**
 
-All Rights Reserved
+AGPL-3.0 license
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M4M3HQD82)
